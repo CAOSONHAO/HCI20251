@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Bài Tập</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f3;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+        }
+        .exercise-container {
+            width: 200px;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            background-color: #ffffff;
+        }
+        .exercise {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+        .exercise:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .content-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff;
+            overflow-y: auto;
+        }
+        h2 {
+            color: #4a4a4a;
+            margin-bottom: 10px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            resize: none;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="exercise-container">
+        <h2>Bài Tập</h2>
+        <div class="exercise" onclick="openInput('exercise-1')">
+            <h3>Bài Tập 1</h3>
+            <p>Viết hàm tính tổng hai số.</p>
+        </div>
+        <div class="exercise" onclick="openInput('exercise-2')">
+            <h3>Bài Tập 2</h3>
+            <p>Viết hàm kiểm tra số nguyên tố.</p>
+        </div>
+        <div class="exercise" onclick="openInput('exercise-3')">
+            <h3>Bài Tập 3</h3>
+            <p>Viết hàm đảo ngược một chuỗi.</p>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <h2>Ghi nội dung</h2>
+        <p>Vui lòng chọn một bài tập bên trái để ghi nội dung.</p>
+        <div id="input-area" style="display: none;">
+            <textarea id="modal-textarea" placeholder="Ghi code vào đây..." rows="5"></textarea>
+            <div style="text-align: right;">
+                <button onclick="saveContent()">summit</button>
+                <button onclick="clearContent()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentExerciseId = '';
+
+        function openInput(exerciseId) {
+            currentExerciseId = exerciseId;
+            document.getElementById('input-area').style.display = 'block';
+            document.getElementById('modal-textarea').value = localStorage.getItem(exerciseId) || '';
+            document.querySelector('.content-container p').innerText = 'Nhập code cho bài tập.';
+        }
+
+        function clearContent() {
+            document.getElementById('modal-textarea').value = '';
+        }
+
+        function saveContent() {
+            const content = document.getElementById('modal-textarea').value;
+            localStorage.setItem(currentExerciseId, content);
+            window.location.href = 'score.html'; // Chuyển đến trang cập nhật điểm
+        }
+    </script>
+</body>
+</html>
