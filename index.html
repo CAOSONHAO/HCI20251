@@ -1,155 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Layout with Video</title>
+    <title>Trang Đăng Nhập</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #eef2f3;
             margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        .header {
-            background-color: #f76b1c;
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
-        .container {
             display: flex;
-            max-width: 1200px;
-            margin: 20px auto;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        .main-content {
-            flex: 3;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-right: 20px;
+        .login-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
         }
-        .sidebar {
-            flex: 1;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        h2 {
+            text-align: center;
+            color: #4a4a4a;
         }
-        h1, h2 {
-            color: #333;
-        }
-        .module {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-            cursor: pointer;
-        }
-        .module:hover {
-            background-color: #f5f5f5;
-        }
-        .sub-module {
-            padding: 8px 10px;
-            border-bottom: 1px solid #ddd;
-            cursor: pointer;
-            margin-left: 20px; /* Indent sub-modules */
-        }
-        .sub-module:hover {
-            background-color: #e0e0e0;
-        }
-        .video-section {
-            display: none;
-            margin-top: 20px;
-        }
-        iframe {
+        input {
             width: 100%;
-            height: 315px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #007bff;
+            border-radius: 5px;
         }
-        .stats {
-            margin-top: 10px;
-            font-size: 0.9em;
-            color: #666;
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
         }
-        .search-bar {
-            margin-bottom: 20px;
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>MuleSoft Course </h1>
-    </div>
-
-    <div class="container">
-        <div class="main-content">
-            <h2 id="course-title">Select a module to view details</h2>
-            <p id="course-description">Click on a module from the list to see the content and video.</p>
-            <div class="stats" id="course-stats"></div>
-            <div class="video-section" id="video-section">
-                <iframe id="course-video" src="" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="sidebar">
-            <h2>Course content</h2>
-            <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Search modules..." onkeyup="filterModules()">
-            </div>
-            <ul id="module-list">
-                <li class="module">DataWeave
-                    <ul>
-                        <li class="sub-module" onclick="showModule('DataWeave Fundamentals', 'Learn the fundamentals of DataWeave...', 'https://www.youtube.com/embed/dQw4w9WgXcQ', 12000, 4.8, 60)">DataWeave Fundamentals</li>
-                        <li class="sub-module" onclick="showModule('Advanced DataWeave Techniques', 'Deep dive into advanced features of DataWeave...', 'https://www.youtube.com/embed/anotherlink', 10000, 4.6, 75)">Advanced DataWeave Techniques</li>
-                    </ul>
-                </li>
-                <li class="module">Mule Database
-                    <ul>
-                        <li class="sub-module" onclick="showModule('Database Integration in MuleSoft', 'Introduction to database integration...', 'https://www.youtube.com/embed/tgbNymZ7vqY', 8000, 4.5, 45)">Database Integration in MuleSoft</li>
-                        <li class="sub-module" onclick="showModule('Optimizing Database Connections in Mule', 'Learn how to optimize database interactions...', 'https://www.youtube.com/embed/yetanotherlink', 9000, 4.4, 50)">Optimizing Database Connections in Mule</li>
-                    </ul>
-                </li>
-                <li class="module">Mule Error Handling
-                    <ul>
-                        <li class="sub-module" onclick="showModule('Error Management in MuleSoft', 'How to handle errors in Mule...', 'https://www.youtube.com/embed/someotherlink', 5000, 4.7, 30)">Error Management in MuleSoft</li>
-                        <li class="sub-module" onclick="showModule('Best Practices for Error Handling in Mule', 'Best practices for error handling...', 'https://www.youtube.com/embed/anotherlink', 4500, 4.5, 25)">Best Practices for Error Handling in Mule</li>
-                    </ul>
-                </li>
-                <li class="module">API Design
-                    <ul>
-                        <li class="sub-module" onclick="showModule('API Design Principles Using RAML', 'Designing APIs using RAML...', 'https://www.youtube.com/embed/yetanotherlink', 9000, 4.6, 90)">API Design Principles Using RAML</li>
-                        <li class="sub-module" onclick="showModule('Best Practices for API Development', 'Learn best practices for API design...', 'https://www.youtube.com/embed/anotherlink', 11000, 4.8, 70)">Best Practices for API Development</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+    <div class="login-container">
+        <h2>Đăng Nhập</h2>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Mật Khẩu" required>
+        <button onclick="login()">Đăng Nhập</button>
+        <p id="error-message" style="color: red; text-align: center;"></p>
     </div>
 
     <script>
-        function showModule(title, description, videoUrl, views, rating, hours) {
-            document.getElementById('course-title').innerText = title;
-            document.getElementById('course-description').innerText = description;
-            document.getElementById('course-video').src = videoUrl;
-            document.getElementById('course-stats').innerText = `Views: ${views}, Rating: ${rating} ★, Duration: ${hours} minutes`;
-            document.getElementById('video-section').style.display = 'block';
-        }
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-        function filterModules() {
-            const input = document.getElementById('search-input');
-            const filter = input.value.toLowerCase();
-            const moduleList = document.getElementById('module-list');
-            const modules = moduleList.getElementsByTagName('li');
-
-            for (let i = 0; i < modules.length; i++) {
-                const module = modules[i];
-                const textValue = module.textContent || module.innerText;
-                module.style.display = textValue.toLowerCase().includes(filter) ? '' : 'none';
-
-                // Hide sub-modules if their parent module is hidden
-                const subModules = module.getElementsByTagName('ul')[0];
-                if (subModules) {
-                    for (let j = 0; j < subModules.children.length; j++) {
-                        const subModule = subModules.children[j];
-                        subModule.style.display = subModule.textContent.toLowerCase().includes(filter) ? '' : 'none';
-                    }
-                }
+            // Kiểm tra thông tin đăng nhập
+            if (email === "123@gmail.com" && password === "123") {
+                window.location.href = 'exercises.html'; // Chuyển đến trang bài tập
+            } else {
+                document.getElementById('error-message').innerText = 'Email hoặc mật khẩu không đúng!';
             }
         }
     </script>
