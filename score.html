@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập Nhật Điểm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f3;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .score {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #007bff;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        .content {
+            margin: 10px 0;
+            white-space: pre-wrap; /* Giữ định dạng của văn bản */
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cập Nhật Điểm</h1>
+        <div class="result">
+            <h3>Nội dung đã ghi:</h3>
+            <div class="content" id="saved-content"></div>
+            <h4>Các lỗi sai:</h4>
+            <div class="error-message" id="errors"></div>
+            <h4 class="score">Điểm: <span id="score"></span></h4>
+        </div>
+        <div class="button-container">
+            <button onclick="window.location.href='exercises.html'">Quay lại</button>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const currentExerciseId = localStorage.key(0); // Lấy bài tập đầu tiên được lưu
+            const content = localStorage.getItem(currentExerciseId);
+            const { errors, score } = checkForErrors(content);
+
+            document.getElementById('saved-content').innerText = content || 'Không có nội dung nào được ghi.';
+            document.getElementById('errors').innerText = errors.length ? errors.join('\n') : "Không có lỗi sai.";
+            document.getElementById('score').innerText = score;
+        };
+
+        function checkForErrors(content) {
+            const errors = [];
+            let score = 100; // Điểm tối đa là 100
+
+            if (!content) {
+                errors.push("Nội dung không được để trống.");
+                score -= 50; // Trừ 50 điểm nếu nội dung trống
+            }
+            if (content.length < 10) {
+                errors.push("Nội dung cần ít nhất 10 ký tự.");
+                score -= 30; // Trừ 30 điểm nếu nội dung quá ngắn
+            }
+            if (!content.includes('function')) {
+                errors.push("Thiếu từ khóa 'function'.");
+                score -= 20; // Trừ 20 điểm nếu không có từ khóa 'function'
+            }
+
+            // Đảm bảo điểm không âm
+            score = Math.max(0, score);
+            return { errors, score };
+        }
+    </script>
+</body>
+</html>
